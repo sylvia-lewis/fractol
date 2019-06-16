@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/06/16 17:32:19 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/06/16 20:17:18 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void        mandelbrot()
             break ;
         n++;
     }
+    if (n == MAX_ITER)
+    {
+        return (0);
+    }
+    if (n > )
 }
 
 void        julia()
