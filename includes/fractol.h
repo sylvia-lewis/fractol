@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sylvia <sylvia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
+/*   Updated: 2019/06/26 00:17:43 by sylvia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -20,11 +32,11 @@ typedef struct      s_mouse
     int             y;
 }                   t_mouse;
 
-typedef struct      s_img
+typedef struct      s_img;
 {
     void            *ptr;
 
-};
+}                   t_img;
 
 typedef struct      s_info
 {
