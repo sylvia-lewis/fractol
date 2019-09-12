@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour.c                                           :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sylewis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/16 16:26:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/09/12 15:37:42 by sylewis          ###   ########.fr       */
+/*   Created: 2019/04/02 18:37:24 by sylewis           #+#    #+#             */
+/*   Updated: 2019/04/07 19:17:37 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <stdlib.h>
 
-void    colour_pixel(int n)
+char		*ft_strnew(size_t size)
 {
-    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img->ptr, 0, 0);
-    
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	if (!(str = (char*)malloc(sizeof(*str) * (size + 1))))
+		return (NULL);
+	while (i <= size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return (str);
 }

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour.c                                           :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sylewis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/16 16:26:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/09/12 15:37:42 by sylewis          ###   ########.fr       */
+/*   Created: 2019/04/08 17:08:27 by sylewis           #+#    #+#             */
+/*   Updated: 2019/04/08 17:08:46 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-
-void    colour_pixel(int n)
+int	ft_power(int nb, int power)
 {
-    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img->ptr, 0, 0);
-    
+	if (power > 1)
+	{
+		return (nb * ft_power(nb, power - 1));
+	}
+	else if (power == 0)
+		return (1);
+	else if (power == 1)
+		return (nb);
+	else
+		return (0);
 }

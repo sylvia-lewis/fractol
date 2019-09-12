@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour.c                                           :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sylewis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/16 16:26:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/09/12 15:37:42 by sylewis          ###   ########.fr       */
+/*   Created: 2019/04/02 18:47:38 by sylewis           #+#    #+#             */
+/*   Updated: 2019/04/07 15:25:14 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-
-void    colour_pixel(int n)
+void	ft_strclr(char *s)
 {
-    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img->ptr, 0, 0);
-    
+	int i;
+
+	i = 0;
+	if (s != '\0')
+	{
+		while (s[i + 1] != '\0')
+		{
+			s[i] = '\0';
+			i++;
+		}
+		s[i] = '\0';
+	}
 }

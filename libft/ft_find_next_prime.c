@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour.c                                           :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sylewis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/16 16:26:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/09/12 15:37:42 by sylewis          ###   ########.fr       */
+/*   Created: 2019/02/08 14:25:30 by sylewis           #+#    #+#             */
+/*   Updated: 2019/04/08 17:10:48 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void    colour_pixel(int n)
+int		ft_find_next_prime(int nb)
 {
-    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img->ptr, 0, 0);
-    
+	int np;
+	int i;
+
+	i = 0;
+	if (nb == 0)
+		np = 1;
+	if (nb == 1)
+		np = 2;
+	while (ft_is_prime(nb + i) == 0)
+		i++;
+	np = nb + i;
+	return (np);
 }

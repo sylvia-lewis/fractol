@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour.c                                           :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sylewis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/16 16:26:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/09/12 15:37:42 by sylewis          ###   ########.fr       */
+/*   Created: 2019/02/08 14:20:59 by sylewis           #+#    #+#             */
+/*   Updated: 2019/02/09 14:38:59 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-
-void    colour_pixel(int n)
+int	ft_sqrt(int nb)
 {
-    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img->ptr, 0, 0);
-    
+	int sqrt;
+
+	sqrt = 1;
+	if (nb >= 0)
+	{
+		while ((sqrt * sqrt) != nb)
+		{
+			if (sqrt != 46340)
+				sqrt++;
+			else
+				return (0);
+		}
+		return (sqrt);
+	}
+	else
+		return (0);
 }

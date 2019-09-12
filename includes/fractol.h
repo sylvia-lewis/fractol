@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylvia <sylvia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
-/*   Updated: 2019/06/26 00:17:43 by sylvia           ###   ########.fr       */
+/*   Updated: 2019/09/12 15:27:58 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,30 @@
 # include <unistd.h>
 # include <math.h>
 
-typedef struct      s_complex
+# define MAX_ITER 500
+# define W_NAME "Fractol by sylewis"
+# define W_WID 1080
+# define W_HEIGHT 720
+# define HUD_WID 400
+
+# define UP_WHEEL 4
+# define RIGHT_CLICK 2
+# define DOWN_WHEEL 5
+# define LEFT_CLICK 1
+
+# define RED_CROSS 17
+# define KEY_PRESS 2
+# define MOUSE_PRESS 4
+# define MOUSE_RELEASE 5
+# define MOUSE_MOVE 6
+
+# define SPACE 49
+
+typedef struct      s_point
 {
     double          a;
     double          b;
-}                   t_complex;
+}                   t_point;
 
 typedef struct      s_mouse
 {
@@ -42,4 +61,9 @@ typedef struct      s_info
 {
     void            *mlx_ptr;
     void            *win_ptr;
+    struct s_mouse  mouse;
+    struct s_point  point;
+    int             fractol;
 }                   t_info;
+
+#endif
