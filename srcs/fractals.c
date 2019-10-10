@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/09/12 15:32:34 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/03 10:23:30 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void        func()
     {
         while (nx < WIDTH)
         {
-            fractol->x = x;
-            fractol->y = y;
-            fractol(fractol);
+            fractal->x = x;
+            fractal->y = y;
+            fractal(fractal);
             x++;
             nx++;
         }
@@ -78,18 +78,18 @@ void        julia(mouse)
     colour_pixel(n, structure);
 }
 
-void    fractol(t_info *info)
+void    fractal(t_info *info)
 {
     int    n;
     int    x;
     int    y;
 
-    if (info->fractol % 2 == 0) //JULIA
+    if (info->fractal % 2 == 0) //JULIA
     {
         info->point.a = info->mouse.x;
         info->point.b = info->mouse.y;
     }
-    if (info->fractol % 2 != 0) //MANDELBROT
+    if (info->fractal % 2 != 0) //MANDELBROT
     {
         info->point.a = pixel_location;
         info->point.b = pixel_location;

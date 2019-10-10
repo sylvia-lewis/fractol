@@ -6,11 +6,13 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 13:16:20 by sylewis           #+#    #+#             */
-/*   Updated: 2019/05/06 19:09:59 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/03 10:03:56 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdlib.h"
+#include "unistd.h"
 
 void				ft_list_push_back(t_gnl **begin_list, t_gnl *elem)
 {
