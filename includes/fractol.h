@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
-/*   Updated: 2019/10/10 17:46:14 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/07 17:03:21 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ typedef struct      s_mouse
     int             y;
 }                   t_mouse;
 
-/*
-typedef struct      s_img;
+
+typedef struct      s_img
 {
     void            *ptr;
 
-}                   t_image;
-*/
+}                   t_img;
+
 
 typedef struct      s_info
 {
@@ -69,6 +69,7 @@ typedef struct      s_info
     int             fractal;
     double          x_range;
     double          y_range;
+    struct s_img    img;
 }                   t_info;
 
 

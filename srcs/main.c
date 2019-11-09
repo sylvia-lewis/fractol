@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:24:15 by sylewis           #+#    #+#             */
-/*   Updated: 2019/10/10 17:46:16 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/07 17:03:46 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int     main(int argc, char **argv)
 	mlx_hook(info->win_ptr, MOUSE_PRESS, 0, mouse_press, info);
 	mlx_hook(info->win_ptr, MOUSE_RELEASE, 0, mouse_release, info);
 	mlx_hook(info->win_ptr, MOUSE_MOVE, 0, mouse_move, info);
+	info->img.ptr = mlx_new_image(info->mlx_ptr, PIXELS_X, PIXELS_Y);
 	//update_display(info);
 	mlx_loop(info->mlx_ptr);
     return (0);
