@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/07 17:03:21 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/09 18:35:23 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct      s_point
     double          b;
 }                   t_point;
 
+typedef struct      s_pix
+{
+    double          a;
+    double          b;
+    char            *colour;
+}                   t_pix;
+
 typedef struct      s_mouse
 {
     int             button;
@@ -56,7 +63,7 @@ typedef struct      s_mouse
 typedef struct      s_img
 {
     void            *ptr;
-
+    char            *string;
 }                   t_img;
 
 
@@ -66,6 +73,7 @@ typedef struct      s_info
     void            *win_ptr;
     struct s_mouse  mouse;
     struct s_point  point;
+    struct s_pix  working_pixel;
     int             fractal;
     double          x_range;
     double          y_range;

@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/10/03 10:23:30 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/09 18:37:10 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,52 +30,12 @@ void        func()
     
 }
 
-void        mandelbrot()
-{
-    int     n;
-
-    n = 0;
-    while (n < MAX_ITER)
-    {
-        x = x * x - y * y + x1;
-        y = 2 * x * y + y1;
-        if (x * x + y * y > 4)
-            break ;
-        n++;
-    }
-    if (n == MAX_ITER)
-    {
-        return (0);
-    }
-    colour_pixel(n, structure);
-}
-
-void        colour_pixel()
+void        colour_pixel(int n, t_info *info)
 {
     if (n > lim1)
-        colour = COLOUR1;
+        info-> = COLOUR1;
     else if ( n > lim2)
-        colour = COLOUR2;
-}
-
-void        julia(mouse)
-{
-    int     n;
-
-    n = 0;
-    while (n < MAX_ITER)
-    {
-        x = x * x - y * y + mouse->x;
-        y = 2 * x * y + mouse->y;
-        if (x * x + y * y > 4)
-            break ;
-        n++;
-    }
-    if (n == MAX_ITER)
-    {
-        return (0);
-    }
-    colour_pixel(n, structure);
+        info->img.colour = COLOUR2;
 }
 
 void    fractal(t_info *info)
@@ -91,8 +51,8 @@ void    fractal(t_info *info)
     }
     if (info->fractal % 2 != 0) //MANDELBROT
     {
-        info->point.a = pixel_location;
-        info->point.b = pixel_location;
+        info->point.a = info->working_pixel.a;
+        info->point.b = info->working_pixel.b;
     }
     n = 0;
     x = info->point.a;
@@ -109,5 +69,18 @@ void    fractal(t_info *info)
     {
         return (0);
     }
-    colour_pixel(n, structure);
+    colour_pixel(n, info->img.string);
+    if (info->working_pixel.a != PIXELS_X)
+        info->working_pixel.a++;
+    else if (info->working_pixel.b != PIXELS_Y)
+    {
+        info->working_pixel.a = 0;
+        info->working_pixel.b++;
+    }
+    else
+    {
+        STOP;
+    }
+    
+    
 }
