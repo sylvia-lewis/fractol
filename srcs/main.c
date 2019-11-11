@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:24:15 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/11 18:52:17 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/12 04:48:35 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int				finish(t_info *info, char *reason)
 
 void	init(t_info *info)
 {
-	info->origin.a = -2;
-	info->origin.b = 2;
+	info->origin.a = -2.0;
+	info->origin.b = 2.0;
 	info->working_pixel.a = info->origin.a;
 	info->working_pixel.b = info->origin.b;
-	info->x_range = 4;
-	info->y_range = 4;
+	info->x_range = 4.0;
+	info->y_range = 4.0;
 }
 
 int     main(int argc, char **argv)
