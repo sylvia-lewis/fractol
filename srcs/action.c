@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:24:08 by sylewis           #+#    #+#             */
-/*   Updated: 2019/10/10 17:12:48 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/11 17:46:30 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int		mouse_press(int button, int x, int y, t_info *info)
 	info->mouse.y = y;
 	info->mouse.button = button;
 	if (info->mouse.button == UP_WHEEL)
-		zoom(info);
+		return (0);
+		//zoom(info);
 	else if (info->mouse.button == DOWN_WHEEL)
-		zoom(info);
+		return (0);
+		//zoom(info);
 	//display_update_view(info);
 	return (0);
 }
