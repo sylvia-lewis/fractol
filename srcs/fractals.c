@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractals.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/12 19:16:52 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/11/13 05:06:01 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,38 @@ void    fractal_mjulia(t_info *info, int pix_x, int pix_y)
     colour_pixel(n, pix_x, pix_y, info);
 }
 
+void    burning(t_info *info, int pix_x, int pix_y)
+{
+    int    n;
+    double x;
+    double y;
+
+    else if (info->fractal == 1) //MANDELBROT
+    {
+        info->point.a = info->working_pixel.a;
+        info->point.b = info->working_pixel.b;
+    }
+    n = 0;
+    x = info->point.a;
+    y = info->point.b;
+    double temp;
+    while (n < MAX_ITER)
+    {
+        temp = x * x - y * y + info->point.a;
+        y = fabs(2 * x * y) + info->point.b;
+        x = fabs(temp);
+        if (x * x + y * y > 4)
+            break ;
+        n++;
+    }
+    if (n == MAX_ITER)
+    {
+        return ;
+    }
+    colour_pixel(n, pix_x, pix_y, info);
+}
+
+
 void    fractal(t_info *info, int pix_x, int pix_y)
 {
     int    n;
@@ -117,9 +149,14 @@ void    fractal(t_info *info, int pix_x, int pix_y)
         fractal_julia(info, pix_x, pix_y);
         return ;
     }
-    if (info->fractal == 3) //JULIA
+    if (info->fractal == 3) //MULTI JULIA
     {
         fractal_mjulia(info, pix_x, pix_y);
+        return ;
+    }
+     if (info->fractal == 4) //BURNING SHIP
+    {
+        burning(info, pix_x, pix_y);
         return ;
     }
     else if (info->fractal == 1) //MANDELBROT
