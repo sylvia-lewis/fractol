@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/11 18:50:08 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/12 17:58:55 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void        func(t_info *info)
 void    fractal(t_info *info, int pix_x, int pix_y)
 {
     int    n;
-    int    x;
-    int    y;
+    double x;
+    double y;
 
     if (info->fractal == 2) //JULIA
     {
