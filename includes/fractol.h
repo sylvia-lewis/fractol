@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/12 15:24:41 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/12 19:12:41 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <math.h>
 
-# define MAX_ITER 50
+# define MAX_ITER 150
 # define W_NAME "Fractol by sylewis"
 # define PIXELS_X 1080
 # define PIXELS_Y 1080
@@ -27,9 +27,6 @@
 
 # define LIMIT_1 1
 # define LIMIT_2 2
-
-# define COLOUR1 "red" ^^^^
-# define COLOUR2 "blue" ^^^^^
 
 # define UP_WHEEL 4
 # define RIGHT_CLICK 2
@@ -71,6 +68,9 @@ typedef struct      s_img
 {
     void            *ptr;
     char            *string;
+	int				bpp;
+	int				s_l;
+	int				endian;
 }                   t_img;
 
 

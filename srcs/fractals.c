@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractals.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/12 16:12:19 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/12 19:16:52 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,7 @@
 
 void        colour_pixel(int n, int x, int y, t_info *info)
 {
-    if (n > 5)
-       *(int*)info.img->string + x + y * PIXELS_X * 4 = (int)0x03f2eb;
-    else if (n > 4)
-       *(int*)info.img->string + x + y * PIXELS_X * 4 = (int)0xffffff;
-    else if (n > 3)
-      *(int*)info.img->string + x + y * PIXELS_X * 4 = (int)0x0034b;
-    else if (n > 2)
-       *(int*)info.img->string + x + y * PIXELS_X * 4 = (int)0xfff2eb;
-    else if (n > 1)
-      *(int*)info.img->string + x + y * PIXELS_X * 4 = (int)0x03f;
-    else
-        *(int*)info.img->string + x + y * PIXELS_X * 4 = (int)0x0eb;
-
+    *(int*)(info->img.string + ((x + y * PIXELS_X) * 4)) = 0x03f2eb * n;
 }
 
 
@@ -37,6 +25,7 @@ void        func(t_info *info)
     int y;
     int x;
 
+    ft_bzero(info->img.string, PIXELS_X * PIXELS_Y * 4);
     x = 0;
     y = 0;
     while (y < PIXELS_Y)
@@ -52,7 +41,7 @@ void        func(t_info *info)
         x = 0;
         y++;
     }
-    
+    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img.ptr, 0, 0);
 }
 
 void    fractal_julia(t_info *info, int pix_x, int pix_y)
@@ -83,7 +72,7 @@ void    fractal_julia(t_info *info, int pix_x, int pix_y)
     {
         return ;
     }
-    colour_pixel(n, pix_x, pix_y, info);    
+    colour_pixel(n, pix_x, pix_y, info);
 }
 
 void    fractal_mjulia(t_info *info, int pix_x, int pix_y)
@@ -114,7 +103,7 @@ void    fractal_mjulia(t_info *info, int pix_x, int pix_y)
     {
         return ;
     }
-    colour_pixel(n, pix_x, pix_y, info);    
+    colour_pixel(n, pix_x, pix_y, info);
 }
 
 void    fractal(t_info *info, int pix_x, int pix_y)
@@ -155,6 +144,6 @@ void    fractal(t_info *info, int pix_x, int pix_y)
     {
         return ;
     }
-    colour_pixel(n, pix_x, pix_y, info);    
+    colour_pixel(n, pix_x, pix_y, info);
 }
 
