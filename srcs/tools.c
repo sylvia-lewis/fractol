@@ -45,14 +45,14 @@ void	zoom_in(t_info *info)
 	printf("old a origin = %f\n", info->origin.a);
 	printf("old b origin = %f\n", info->origin.b);
 	
-	info->x_range *= 0.99;
-	info->y_range *= 0.99;
-
 	info->zoom_pixel.a = info->origin.a + info->x_range * (double)info->mouse.x / (double)PIXELS_X;
 	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y / (double)PIXELS_Y;
+	info->x_range *= 0.99;
+	info->y_range *= 0.99;
 	info->origin.a = info->zoom_pixel.a - (info->x_range / (double)PIXELS_X) * (info->mouse.x);
 	info->origin.b = info->zoom_pixel.b - (info->y_range / (double)PIXELS_Y) * (info->mouse.y);
-printf("x range = %f\n", info->x_range);
+
+	printf("x range = %f\n", info->x_range);
 	printf("y range = %f\n", info->y_range);
 	printf("a origin = %f\n", info->origin.a);
 	printf("b origin = %f\n", info->origin.b);
@@ -65,13 +65,13 @@ void	zoom_out(t_info *info)
 	printf("olda origin = %f\n", info->origin.a);
 	printf("old b origin = %f\n", info->origin.b);
 	
-	info->x_range *= 1.01;
-	info->y_range *= 1.01;
-
 	info->zoom_pixel.a = info->origin.a + info->x_range * (double)info->mouse.x / (double)PIXELS_X;
 	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y / (double)PIXELS_Y;
-	info->origin.a = info->zoom_pixel.a + (info->x_range / (double)PIXELS_X) * (double)(info->mouse.x);
-	info->origin.b = info->zoom_pixel.b + (info->y_range / (double)PIXELS_Y) * (double)(info->mouse.y);
+	info->x_range *= 1.01;
+	info->y_range *= 1.01;
+	info->origin.a = info->zoom_pixel.a - (info->x_range / (double)PIXELS_X) * (info->mouse.x);
+	info->origin.b = info->zoom_pixel.b - (info->y_range / (double)PIXELS_Y) * (info->mouse.y);
+	
 	printf("x range = %f\n", info->x_range);
 	printf("y range = %f\n", info->y_range);
 	printf("a origin = %f\n", info->origin.a);
