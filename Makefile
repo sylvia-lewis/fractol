@@ -6,7 +6,7 @@
 #    By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/16 16:24:25 by sylewis           #+#    #+#              #
-#    Updated: 2019/11/11 17:45:42 by sylewis          ###   ########.fr        #
+#    Updated: 2019/11/12 14:11:53 by sylewis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	fractol
 SOURCES		=	./srcs/main.c \
 				./srcs/action.c \
 				./srcs/fractals.c \
-				#./srcs/tools.c
+				./srcs/tools.c
 				#./srcs/colour.c \
 				#./srcs/display.c \
 				
@@ -46,5 +46,4 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re:
-	fclean all
+re: fclean all
