@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:24:08 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/12 14:31:58 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/13 13:21:44 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		key_press(int keycode, t_info *info)
 		func(info);
 	}
 	if (keycode == ESC)
-		finish(info, "ESC");
+		finish(info);
 	return (0);
 }
 

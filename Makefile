@@ -6,7 +6,7 @@
 #    By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/16 16:24:25 by sylewis           #+#    #+#              #
-#    Updated: 2019/11/12 14:11:53 by sylewis          ###   ########.fr        #
+#    Updated: 2019/11/13 11:49:30 by sylewis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,6 @@ SOURCES		=	./srcs/main.c \
 				./srcs/fractals.c \
 				./srcs/tools.c
 				#./srcs/colour.c \
-				#./srcs/display.c \
-				
-				#./srcs/hud.c \
 				
 				
 OBJ			=	$(SOURCES:.c=.o)
@@ -32,7 +29,7 @@ FRAMEWORK	=	-framework OpenGL -framework Appkit
 all: $(NAME)
 
 $(NAME): remake $(OBJ)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIB) -lmlx $(FRAMEWORK) -L libft/ -lft
+	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIB) -lmlx $(FRAMEWORK) -L libft -lft
  
 remake :
 	make -C libft/
