@@ -14,7 +14,7 @@
 
 void	zoom_in(t_info *info)
 {
-	info->max_iter += 10;
+	info->max_iter += 1;
 	info->zoom_pixel.a = info->origin.a + info->x_range * (double)info->mouse.x
 		/ (double)PIXELS_X;
 	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y

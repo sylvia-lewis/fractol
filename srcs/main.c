@@ -28,7 +28,7 @@ void	init(t_info *info)
 	info->working_pixel.b = info->origin.b;
 	info->x_range = 4.0;
 	info->y_range = -4.0;
-	info->max_iter = 30;
+	info->max_iter = 15;
 	if (info->fractal == 3 && info->multi == 0)
 		info->multi = 3;
 }
