@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:39:30 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/13 13:32:50 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/14 16:02:24 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	fractal_julia(t_info *info, int pix_x, int pix_y)
 		n++;
 	}
 	if (n == info->max_iter)
+	{
+		*(int*)(info->img.string + ((pix_x + pix_y * PIXELS_X) * 4)) = 0xffffff;
 		return ;
+	}
 	colour_pixel(n, pix_x, pix_y, info);
 }
 
@@ -66,7 +69,10 @@ void	fractal_mjulia(t_info *info, int pix_x, int pix_y)
 		n++;
 	}
 	if (n == info->max_iter)
+	{
+		*(int*)(info->img.string + ((pix_x + pix_y * PIXELS_X) * 4)) = 0xffffff;
 		return ;
+	}
 	colour_pixel(n, pix_x, pix_y, info);
 }
 
@@ -93,6 +99,7 @@ void	burning(t_info *info, int pix_x, int pix_y)
 	}
 	if (n == info->max_iter)
 	{
+		*(int*)(info->img.string + ((pix_x + pix_y * PIXELS_X) * 4)) = 0xffffff;
 		return ;
 	}
 	colour_pixel(n, pix_x, pix_y, info);
@@ -121,6 +128,7 @@ void	pain_aux_amandes(t_info *info, int pix_x, int pix_y)
 	}
 	if (n == info->max_iter)
 	{
+		*(int*)(info->img.string + ((pix_x + pix_y * PIXELS_X) * 4)) = 0xffffff;
 		return ;
 	}
 	colour_pixel(n, pix_x, pix_y, info);

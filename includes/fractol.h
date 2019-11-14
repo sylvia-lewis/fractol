@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/13 13:17:43 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/14 13:19:04 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@
 # define SPACE 49
 # define ENTER 36
 # define ESC 53
+
+# define UP_ARROW 126
+# define DOWN_ARROW 0x7D 
+# define LEFT_ARROW 0x7B
+# define RIGHT_ARROW 0x7C
 
 typedef struct		s_point
 {

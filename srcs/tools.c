@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 12:16:58 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/13 13:22:12 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/14 16:27:29 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	zoom_in(t_info *info)
 		/ (double)PIXELS_X;
 	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y
 		/ (double)PIXELS_Y;
-	info->x_range *= 0.9;
-	info->y_range *= 0.9;
+	info->x_range *= 0.8;
+	info->y_range *= 0.8;
 	info->origin.a = info->zoom_pixel.a - (info->x_range / (double)PIXELS_X)
 		* (info->mouse.x);
 	info->origin.b = info->zoom_pixel.b - (info->y_range / (double)PIXELS_Y)
@@ -33,8 +33,8 @@ void	zoom_out(t_info *info)
 		/ (double)PIXELS_X;
 	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y
 		/ (double)PIXELS_Y;
-	info->x_range *= 1.1;
-	info->y_range *= 1.1;
+	info->x_range *= 1.2;
+	info->y_range *= 1.2;
 	info->origin.a = info->zoom_pixel.a - (info->x_range / (double)PIXELS_X)
 		* (info->mouse.x);
 	info->origin.b = info->zoom_pixel.b - (info->y_range / (double)PIXELS_Y)
@@ -64,10 +64,10 @@ void	func(t_info *info)
 		x = 0;
 		y++;
 	}
-	mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img.ptr, 0, 0);
+	mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img.ptr, 0, -1);
 }
 
 void	colour_pixel(int n, int x, int y, t_info *info)
 {
-	*(int*)(info->img.string + ((x + y * PIXELS_X) * 4)) = 0x03f2eb * n;
+	*(int*)(info->img.string + ((x + y * PIXELS_X) * 4)) = 0x03f2eb * (n + 1);
 }
