@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:55:39 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/14 13:19:04 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/16 18:47:01 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define ESC 53
 
 # define UP_ARROW 126
-# define DOWN_ARROW 0x7D 
+# define DOWN_ARROW 0x7D
 # define LEFT_ARROW 0x7B
 # define RIGHT_ARROW 0x7C
 
@@ -93,13 +93,11 @@ typedef struct		s_info
 	int				max_iter;
 }					t_info;
 
-typedef struct		s_frac
+typedef struct		s_thread
 {
-	struct s_img	img;
-	struct s_point	point;
-	struct s_pix	working_pixel;
-	struct s_point	origin;
-}					t_frac;
+	struct s_info	*info;
+	int				i;
+}					t_thread;
 
 int					key_press(int keycode, t_info *info);
 int					mouse_press(int button, int x, int y, t_info *info);
@@ -108,9 +106,9 @@ int					mouse_move(int x, int y, t_info *info);
 void				zoom_in(t_info *info);
 void				zoom_out(t_info *info);
 int					finish(t_info *info);
-void				func(t_info *info);
 void				fractal(t_info *info, int x, int y);
 void				colour_pixel(int n, int x, int y, t_info *info);
 void				init(t_info *info);
+void				update(t_info *info);
 
 #endif

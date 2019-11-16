@@ -6,68 +6,74 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 12:16:58 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/14 16:27:29 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/16 18:45:32 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <pthread.h>
 
-void	zoom_in(t_info *info)
+void	*func(void *thread_addr)
 {
-	info->max_iter += 1;
-	info->zoom_pixel.a = info->origin.a + info->x_range * (double)info->mouse.x
-		/ (double)PIXELS_X;
-	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y
-		/ (double)PIXELS_Y;
-	info->x_range *= 0.8;
-	info->y_range *= 0.8;
-	info->origin.a = info->zoom_pixel.a - (info->x_range / (double)PIXELS_X)
-		* (info->mouse.x);
-	info->origin.b = info->zoom_pixel.b - (info->y_range / (double)PIXELS_Y)
-		* (info->mouse.y);
-}
+	t_thread	*thread;
+	int			y;
+	int			x;
 
-void	zoom_out(t_info *info)
-{
-	info->zoom_pixel.a = info->origin.a + info->x_range * (double)info->mouse.x
-		/ (double)PIXELS_X;
-	info->zoom_pixel.b = info->origin.b + info->y_range * (double)info->mouse.y
-		/ (double)PIXELS_Y;
-	info->x_range *= 1.2;
-	info->y_range *= 1.2;
-	info->origin.a = info->zoom_pixel.a - (info->x_range / (double)PIXELS_X)
-		* (info->mouse.x);
-	info->origin.b = info->zoom_pixel.b - (info->y_range / (double)PIXELS_Y)
-		* (info->mouse.y);
-}
-
-void	func(t_info *info)
-{
-	int	y;
-	int x;
-
-	ft_bzero(info->img.string, PIXELS_X * PIXELS_Y * 4);
-	x = 0;
+	thread = (t_thread*)thread_addr;
 	y = 0;
 	while (y < PIXELS_Y)
 	{
+		x = 0;
 		while (x < PIXELS_X)
 		{
-			fractal(info, x, y);
-			info->working_pixel.a = info->origin.a + info->x_range * x
-				/ PIXELS_X;
+			if ((y * PIXELS_X + x) % 8 == thread->i)
+				fractal(thread->info, x, y);
 			x++;
 		}
-		info->working_pixel.a = info->origin.a;
-		info->working_pixel.b = info->origin.b + info->y_range * y
-			/ PIXELS_Y;
-		x = 0;
 		y++;
 	}
-	mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img.ptr, 0, -1);
+	pthread_exit(NULL);
+	return ((void*)0);
 }
 
 void	colour_pixel(int n, int x, int y, t_info *info)
 {
-	*(int*)(info->img.string + ((x + y * PIXELS_X) * 4)) = 0x03f2eb * (n + 1);
+	if (n == info->max_iter)
+		*(int*)(info->img.string + ((x + y * PIXELS_X) * 4)) = 0xffffff;
+	else
+		*(int*)(info->img.string + ((x + y * PIXELS_X) * 4)) =
+			0x03f2eb * (n + 1);
+}
+
+int		create_threads(t_info *info)
+{
+	int			i;
+	pthread_t	tid[8];
+	t_thread	thread[8];
+	int			ret;
+
+	i = 0;
+	while (i < 8)
+	{
+		thread[i].info = info;
+		thread[i].i = i;
+		ret = pthread_create(&(tid[i]), NULL, func, (void *)(&(thread[i])));
+		if (ret)
+			return (-1);
+		i++;
+	}
+	i = 0;
+	while (i < 8)
+	{
+		pthread_join(tid[i], NULL);
+		i++;
+	}
+	return (0);
+}
+
+void	update(t_info *info)
+{
+	ft_bzero(info->img.string, PIXELS_X * PIXELS_Y * 4);
+	create_threads(info);
+	mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img.ptr, 0, 0);
 }

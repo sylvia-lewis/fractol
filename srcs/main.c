@@ -6,10 +6,11 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:24:15 by sylewis           #+#    #+#             */
-/*   Updated: 2019/11/13 13:58:08 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/11/16 18:50:30 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+__attribute__((destructor)) void foo(void) { while(1); }
 #include "fractol.h"
 
 int		finish(t_info *info)
@@ -28,9 +29,10 @@ void	init(t_info *info)
 	info->working_pixel.b = info->origin.b;
 	info->x_range = 4.0;
 	info->y_range = -4.0;
-	info->max_iter = 15;
+	info->max_iter = 25;
 	if (info->fractal == 3 && info->multi == 0)
 		info->multi = 3;
+	ft_bzero(info->img.string, PIXELS_X * PIXELS_Y * 4);
 }
 
 void	window(t_info *info)
@@ -72,7 +74,7 @@ int		main(int argc, char **argv)
 	info.img.string = mlx_get_data_addr(info.img.ptr,
 		&info.img.bpp, &info.img.s_l, &info.img.endian);
 	init(&info);
-	func(&info);
+	update(&info);
 	mlx_loop(info.mlx_ptr);
 	return (0);
 }
